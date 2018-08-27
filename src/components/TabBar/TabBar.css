@@ -1,0 +1,44 @@
+.TabBar{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+
+}
+.TabBarHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    height: 45px;
+    top:45px;
+    left:0;
+    right: 0;
+    background: white;
+}
+.TabBarHeaderItem{
+    font-size: 15px;
+    color:#666666;
+    height: 21px;
+    text-align: center;
+    display: flex;
+}
+
+.TarBarHeaderPic{
+    height: 21px;
+    width: 21px;
+}
+
+.active{
+    color:#ff2064;
+}
+
+.TabBarcontentItem{
+    display: none;
+}
+
+.show{
+    display: flex;
+    justify-content: center;
+    padding-top: 75px;
+}

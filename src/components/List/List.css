@@ -1,0 +1,65 @@
+.List{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.ListTitle{
+    font-family:PingFangSC-Semibold;
+    font-size:20px;
+    color:#333333;
+    text-align:left;
+    font-weight: bold;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.ListItem{
+    display: flex;
+    align-items: center;
+    height: 50px;
+   
+    border-top:#e4e4e4 1px solid;
+}   
+
+.selectInList{
+    width: 18px;
+    height:18px;
+    background: white;
+    margin-right: 15rpx;
+}
+
+.textInSelectList{
+    font-family:PingFangSC-Regular;
+    font-size:14px;
+    color:#333333;
+    text-align:left;
+    margin-left: 15px;
+}
+
+.notSelectInMultipleList{
+    background:#f2f2f2;
+    width:16px;
+    height:16px;
+    border-radius:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.multipleSelectText{
+    font-family:PingFangSC-Semibold;
+    font-size:12px;
+    color:#ffffff;
+    line-height:12px;
+    text-align:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectInMultipleList{
+    background:#ff2064;
+}

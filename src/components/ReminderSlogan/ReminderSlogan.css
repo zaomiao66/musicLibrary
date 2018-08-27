@@ -1,0 +1,56 @@
+.ReminderSlogan {
+    background: #000;
+    font-size: 14px;
+    position: fixed;
+    display: flex;
+    bottom:150px;
+    left: 109px;
+    justify-content: center;
+    align-items: center;
+    -webkit-animation-name: Appear;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+.ReminderSloganFalse {
+    background: #000;
+    font-size: 14px;
+    position: fixed;
+    display: flex;
+    bottom:150px;
+    left: 109px;
+    justify-content: center;
+    align-items: center;
+    -webkit-animation-name: AppearFalse;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+.ReminderSloganText {
+    color: white;
+    margin: 5px 20px;
+}
+
+
+@-webkit-keyframes Appear {
+    from {
+        opacity: 1;
+        display: flex
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+
+@-webkit-keyframes AppearFalse {
+    from {
+        opacity: 1;
+        display: flex
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}

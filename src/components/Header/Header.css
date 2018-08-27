@@ -1,0 +1,48 @@
+.Header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height:45px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    background: #ffffff;
+}
+
+.HeaderLeft{
+    position: absolute;
+    left:15px;
+    display: flex;
+    height: 18px;
+    color: #ff2064;
+    font-size: 18px;
+    align-items: center;
+}
+
+.HeaderRight{
+    position: absolute;
+    right: 15px;
+    display: flex;
+    height: 18px;
+    color: #ff2064;
+    font-size: 18px;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.HeaderMid{
+    display: flex;
+    height: 24px;
+    font-size: 20px;
+    align-items: center;
+    margin: 0 auto;
+    font-family:PingFangSC-Semibold;
+    color:#333333;
+    font-weight: bolder;
+}
+
+.HeaderLeftImg{
+    height: 18px;
+    width: 10px;
+}
