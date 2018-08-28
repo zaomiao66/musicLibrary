@@ -13,8 +13,8 @@ class MyMusicLibrary extends React.Component {
     console.log(Actions);
     // console.log(11111, this.props)
     Actions.logIn(114);
-    Actions.fetchMyList();
-    Actions.fetchRecommendList();
+    // Actions.fetchMyList();
+    // Actions.fetc/hRecommendList();
   }
   render() {
     // console.log(11111, this.props);

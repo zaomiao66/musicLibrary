@@ -3,9 +3,10 @@ import Selection from '../Selection/Selection';
 import BottomFunctions from '../BottomFunctions/BottomFunctions';
 import List from '../List/List';
 import Dialog from '../Dialog/Dialog';
-import MusicPlayer from '../MusicPlayer/MusicPlayer';
+// import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import MusicCut from '../MusicCut/MusicCut';
 import './MusicProcessor.css';
+import Tab from '../Tab/Tab'
 
 import button_new_play from '../../img/button_new_play.png';
 import button_new_play_gray from '../../img/button_new_play_gray.png';
@@ -31,10 +32,14 @@ export default class MusicProcessor extends Component {
   }
 
 
-  onTouch() { // 测试用
-    alert('你点了一下');
+  componentWillMount() {
+    const { Actions } = this.props;
+    // console.log(Actions);
+    // console.log(11111, this.props)
+    // Actions.logIn(114);
+    Actions.fetchMyList();
+    Actions.fetchRecommendList();
   }
-  // 音乐播放
   handleShowMusicPlayer = singleSelectList => {
     this.setState({
       isMusicPlayerActive: true,
@@ -45,7 +50,7 @@ export default class MusicProcessor extends Component {
   handleHideMusicPlayer = () => {
     this.setState({
       isMusicPlayerActive: false,
-      musicListwillBePlayed: [{ du: 1 }]
+      musicListwillBePlayed: [{ du: 1, bmt: 0, emt: 0 }]
     });
   }
   // 音乐剪切
@@ -59,7 +64,7 @@ export default class MusicProcessor extends Component {
   handleHideMusicCut = () => {
     this.setState({
       isMusicCutActive: false,
-      musicListwillBeCut: [{ du: 1 }]
+      musicListwillBeCut: [{ du: 1, bmt: 0, emt: 0 }]
     });
   }
 
@@ -149,7 +154,7 @@ isMusicCanBeDelete(isSingleSelection, singleSelectList, multipleSelectList) {
         return false;
       }
     } return true;
-  }
+  } return null;
 }
 render() {
   const {
@@ -177,42 +182,47 @@ render() {
         multipleMusicArray={multipleMusicArray}
       />
       <BottomFunctions>
-        <span
-          status={singleSelectList.length !== 0}
+        {/* <div
+          status={singleSelectList.length !== 0 && isSingleSelection}
           pic={button_new_play}
           graypic={button_new_play_gray}
           onTouch={() => this.handleShowMusicPlayer(singleSelectList)}
         >播放
-        </span>
-        <span
+        </div> */}
+        <Tab
+          status={singleSelectList.length !== 0 && isSingleSelection}
+          pic={button_new_play}
+          graypic={button_new_play_gray}
+          onTouch={() => this.handleShowMusicPlayer(singleSelectList)}
+        >播放</Tab>
+        <Tab
           status={this.isMusicCanbeRenamed(isSingleSelection, singleSelectList)}
           pic={button_rename}
           graypic={button_rename_gray}
           onTouch={this.handleShowRenameDialog}
         >重命名
-        </span>
-        <span
+        </Tab>
+        <Tab
           status={this.isMusicCanBeCut(isSingleSelection, singleSelectList)}
           pic={button_cut}
           graypic={button_cut_gray}
           onTouch={() => this.handleShowMusicCut(singleSelectList)}
-        >
-            选取片段
-        </span>
-        <span
+        >选取片段
+        </Tab>
+        <Tab
           status={this.isMusicCanBeCut(isSingleSelection, singleSelectList)}
           pic={button_share}
           graypic={button_share_gray}
           onTouch={() => this.sendToFrends(singleSelectList)}
         >送给朋友
-        </span>
-        <span
+        </Tab>
+        <Tab
           status={this.isMusicCanBeDelete(isSingleSelection, singleSelectList, multipleSelectList)}
           pic={button_delete}
           graypic={button_delete_gray}
           onTouch={() => this.handleShowActionDialog(isSingleSelection, singleSelectList, multipleMusicArray)}
         >删除
-        </span>
+        </Tab>
       </BottomFunctions>
       <Dialog
         isActive={this.state.isActionDialogActive}
@@ -228,15 +238,23 @@ render() {
         onCancel={this.handleCancelRenameDialog}
         value={singleSelectList}
       />
-      <MusicPlayer
+      {/* <MusicPlayer
         isActive={this.state.isMusicPlayerActive}
         onCancel={this.handleHideMusicPlayer}
         music={this.state.musicListwillBePlayed}
+      /> */}
+      <MusicCut
+        isActive={this.state.isMusicPlayerActive}
+        onCancel={this.handleHideMusicPlayer}
+        music={this.state.musicListwillBePlayed}
+        type="musicPlayer"
+        Actions={Actions}
       />
       <MusicCut
         isActive={this.state.isMusicCutActive}
         onCancel={this.handleHideMusicCut}
         music={this.state.musicListwillBeCut}
+        type="musicCut"
         Actions={Actions}
       />
     </div>);

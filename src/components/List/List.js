@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import './List.css';
+import ReminderSlogan from '../ReminderSlogan/ReminderSlogan';
 import select_music from '../../img/select_music.png';
 
+// let title = null;
 export default class List extends Component {
-  adjustSingleMusicIsSelected(itemId, arr) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: null
+    };
+  }
+  adjustSingleMusicIsSelected = (itemId, arr) => {
     if (arr.length === 0 || arr[0] !== itemId) {
       return (
         <span className="selectInList" />
@@ -11,7 +19,7 @@ export default class List extends Component {
     } return (<img className="selectInList" src={select_music} />);
   }
 
-  adjustMultipleMusicIsSelected(itemId, arr) {
+  adjustMultipleMusicIsSelected = (itemId, arr) => {
     if (arr.length === 0 || arr.indexOf(itemId) === -1) {
       return (
         <span className="notSelectInMultipleList" />
@@ -23,19 +31,25 @@ export default class List extends Component {
     );
   }
 
-  launchAction(id) {
+  launchAction = id => {
     const { Actions } = this.props;
     console.log(id);
     Actions.selectSingleMusic(id);
   }
 
-  launchMultipleAction(id) {
+  launchMultipleAction = id => {
     const { Actions } = this.props;
     Actions.selectMultipleMusic(id);
+    this.setState({
+
+    });
   }
 
-  handleReminderSloganActive() {
+  handleReminderSloganActive = () => {
     alert('只能选5首歌');
+    // this.setState({
+    //   isReminderSloganAppear: true
+    // });
   }
 
   adjustMultipleSelectedArrayLength(item, idx, arr) {
@@ -79,7 +93,7 @@ export default class List extends Component {
             this.props.arr.map((item, idx) => (
             this.adjustMultipleSelectedArrayLength(item, idx, multipleMusicArray)
             ))}
-        {/* <ReminderSlogan isReminderSloganActive={this.state.isReminderSloganActive} title="最多只能选5首歌" /> */}
+        <ReminderSlogan title={this.state.title} />
       </div>
     );
   }

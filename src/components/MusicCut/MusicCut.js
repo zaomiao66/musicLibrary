@@ -46,7 +46,10 @@ export default class MusicPlayer extends Component {
   getWindowClassName = () => {
     if (!this.props.isActive) {
       return 'MusicCutWindow';
-    } return 'MusicCutWindow showMusicCutWindow';
+    } if (this.props.type === 'musicPlayer') {
+      return 'MusicCutWindowOnlyPlayer showMusicCutWindow';
+    }
+    return 'MusicCutWindow showMusicCutWindow';
   }
 
 
@@ -305,27 +308,15 @@ export default class MusicPlayer extends Component {
       <div>
         <div className={this.getMaskClassName()} onClick={this.hideThisCutComponent} />
         <div className={this.getWindowClassName()}>
+          {this.props.type === 'musicPlayer' ? <div className="aBlackLine" /> :
           <div className="MusicCutButton">
-            {/* <span className="MusicCutButtonAndtext">
-              <img className="MusicCutButtonImg" src={button_cut_music_start} />
-              <span className="MusicCutButtonText">标记起点</span>
-              <span className="MusicCutButtonTimeText">00 : 00</span>
-            </span> */}
             {this.adjustMarkStartCanBeUsed()}
-            {/* <span className="MusicCutButtonAndtext">
-              <img className="MusicCutButtonImg" src={button_cut_music_clear} />
-              <span className="MusicCutButtonText">清除</span>
-            </span> */}
             {this.adjustClearCanBeUsed()}
-            {/* <span className="MusicCutButtonAndtext">
-              <img className="MusicCutButtonImg" src={button_cut_music_finish} />
-              <span className="MusicCutButtonText">标记终点</span>
-              <span className="MusicCutButtonTimeText">02 : 34</span>
-            </span> */}
             {this.adjustMarkComplishCanBeUsed()}
           </div>
+          }
           <div className="MusicProgressingAll">
-            <audio src={this.props.music.map(item => item.m_url)} />
+            {/* <audio src={this.props.music.map(item => item.m_url)} /> */}
             <img
               className="MusicProgressingImg"
               src={this.state.isMusicCutIsPlaying ? btn_pause : btn_play}
@@ -348,9 +339,23 @@ export default class MusicPlayer extends Component {
               {changeSecToMinute(this.state.timesHaveBeenPlayed)}/{changeSecToMinute(this.props.music.map(item => item.du))}
             </span>
           </div>
-          <div className="MusicCutComplish">
-            <span className="MusicCutComplishText" onClick={this.hideThisCutComponent}>完成</span>
-          </div>
+          {
+            this.props.type === 'musicPlayer' ?
+              <div className="MusicName">
+                <span className="MusicNameText">
+                  {this.props.music.map(item => item.name)}
+                </span>
+              </div> : null
+          }
+          {
+            this.props.type === 'musicPlayer' ?
+              <div className="MusicPlayerButton">
+                <span className="MusicPlayerButtonText" onClick={this.hideThisCutComponent} >关闭</span>
+              </div> :
+              <div className="MusicCutComplish">
+                <span className="MusicCutComplishText" onClick={this.hideThisCutComponent}>完成</span>
+              </div>
+        }
         </div>
         <audio
           ref={audio => { this.audio = audio; }}

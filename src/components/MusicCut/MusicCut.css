@@ -33,6 +33,20 @@
     transform: translateY(100%);
 }
 
+.MusicCutWindowOnlyPlayer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #EFEFF4;
+    z-index: 100;
+    font-size: 17px;
+    transition: transform .3s ease-in;
+    display: flex;
+    flex-direction: column-reverse;
+    transform: translateY(100%);
+}
+
 .showMusicCutWindow {
     transform: translateY(0)
 }
@@ -153,4 +167,38 @@
     color:#666666;
     line-height:20px;
     text-align:center;
+}
+.aBlackLine {
+    height: 30px;
+}
+
+.MusicPlayerButton {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.MusicPlayerButtonText {
+    color:#ff2064;
+    margin-right: 15px;
+    font-size: 15px;
+}
+
+.MusicName {
+    display: flex;
+    height: 17px;
+    align-items: center;
+    justify-content: center;
+}
+
+.MusicTime {
+    display: flex;
+    height: 45px;
+    align-items: center;
+    justify-content: center; 
+}
+
+.MusicTimeText {
+    font-size: 10px;
 }

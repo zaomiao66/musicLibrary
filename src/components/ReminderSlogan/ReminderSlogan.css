@@ -3,12 +3,14 @@
     font-size: 14px;
     position: fixed;
     display: flex;
-    bottom:150px;
+    bottom:-150px;
     left: 109px;
+    z-index: 1000;
+    /* margin: 0 auto; */
     justify-content: center;
     align-items: center;
     -webkit-animation-name: Appear;
-    -webkit-animation-duration: 3s;
+    -webkit-animation-duration: 2s;
     -webkit-animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -17,12 +19,14 @@
     font-size: 14px;
     position: fixed;
     display: flex;
-    bottom:150px;
+    bottom:-150px;
     left: 109px;
+    z-index: 1000;
+    /* margin: 0 auto; */
     justify-content: center;
     align-items: center;
     -webkit-animation-name: AppearFalse;
-    -webkit-animation-duration: 3s;
+    -webkit-animation-duration: 2s;
     -webkit-animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -34,23 +38,57 @@
 
 @-webkit-keyframes Appear {
     from {
+        opacity: 0;
+        display: flex;
+        bottom: -100px;
+    }
+    1% {
         opacity: 1;
-        display: flex
+        display: flex;
+        bottom: 150px;
+    }
+    2% {
+        opacity: 1;
+        display: flex;
+        bottom: 150px;
+    }
+    99% {
+        opacity: 0;
+        display: none;
+        bottom: 150px;
     }
     to {
         opacity: 0;
         display: none;
+        bottom: -100px;
     }
 }
 
 
 @-webkit-keyframes AppearFalse {
     from {
+        opacity: 0;
+        display: flex;
+        bottom: -100px;
+    }
+    1% {
+        opacity: 0;
+        display: flex;
+        bottom: 150px;
+    }
+    2% {
         opacity: 1;
-        display: flex
+        display: flex;
+        bottom: 150px;
+    }
+    99% {
+        opacity: 0;
+        display: none;
+        bottom: 150px;
     }
     to {
         opacity: 0;
         display: none;
+        bottom: -100px;
     }
 }

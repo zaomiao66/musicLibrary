@@ -7,6 +7,9 @@ export default class ReminderSlogan extends Component {
 
     }
     render() {
+      if (this.props.title === null) {
+        return null;
+      }
       if (SloganTroggle) {
         SloganTroggle = false;
         return (

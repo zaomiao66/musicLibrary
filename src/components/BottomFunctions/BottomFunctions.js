@@ -8,7 +8,7 @@ export default class BottomFunctions extends Component {
 
     };
   }
-  mapAndPrintBottomFunctions() {
+  mapAndPrintBottomFunctions = () => {
     return React.Children.map(this.props.children, element => {
       if (element.props.status) {
         return (
